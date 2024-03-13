@@ -6,18 +6,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 /**
- * Description of AccueilControllers
+ * Description of VoyagesController
  *
  * @author Théotim
  */
-class AccueilController extends AbstractController{
-    
+class VoyagesController extends AbstractController{
+     
     /**
-     * @Route("/", name="accueil")
+     * @Route("/voyages", name="voyages")
      * @return Response
      */
-    public function index(): Response{
-        return $this->render("pages\accueil.html.twig");
+    public function voyages(): Response{
+        return $this->render("pages/voyages.html.twig");
     }
     //put your code here
 }
