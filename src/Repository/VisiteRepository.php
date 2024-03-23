@@ -20,8 +20,7 @@ class VisiteRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Visite::class);
     }
-    
-    
+        
     /**
      * Retourne toutes les visites triées sur un champ
      * @param type $champ
@@ -34,8 +33,7 @@ class VisiteRepository extends ServiceEntityRepository
                 ->getQuery()
                 ->getResult();
     }
-    
-    
+        
     /**
      * Enregistrement dont un champ est égal à une valeur ou tous
      * les enregistrements si la valeur est vide
@@ -58,6 +56,22 @@ class VisiteRepository extends ServiceEntityRepository
                 ->getResult();
         }
     }
+    
+    public function add(Visite $entity, bool $flush = false): void{
+        $this->getEntityManager()->persist($entity);
+
+        if ($flush) {
+            $this->getEntityManager()->flush();
+        }
+    }
+
+    public function remove(Visite $entity, bool $flush = false): void{
+        $this->getEntityManager()->remove($entity);
+
+        if ($flush) {
+        $this->getEntityManager()->flush();
+    }
+}
 
     
 //    /**
