@@ -3,8 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\VisiteRepository;
+use DateTimeInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+
 
 #[ORM\Entity(repositoryClass: VisiteRepository::class)]
 class Visite
@@ -21,7 +23,7 @@ class Visite
     private ?string $pays = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $datecreation = null;
+    private ?DateTimeInterface $datecreation = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $note = null;
@@ -63,6 +65,11 @@ class Visite
 
         return $this;
     }
+    
+    public function getDatecreation(): ?\DateTimeInterface
+    {
+        return $this->datecreation;
+    }
 
     public function getDatecreationString(): string
     {
@@ -73,7 +80,7 @@ class Visite
         }
     }
 
-    public function setDatecreation(?\DateTimeInterface $datecreation): static
+    public function setDatecreation(?DateTimeInterface $datecreation): static
     {
         $this->datecreation = $datecreation;
 
